@@ -1,0 +1,91 @@
+$color: #d3d3d3
+$p-color: #00fff2
+$s-color: #00b7ff
+$success-color: #00ff55
+$warning-color: #c8ff00
+$danger-color: #ff0000
+
+body, html
+    margin: 0
+    padding: 0
+    font-family: 'Roboto', sans-serif
+    font-weight: 400
+    height: 100vh
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: #2e2e2e
+
+@mixin btn-styles($bg-color, $shadow-color)
+    background-color: $bg-color
+    &:hover
+        box-shadow: 0px 0px 12px 1px $shadow-color
+
+.btn-wrapper
+    position: relative
+    display: inline-block
+    margin: .1rem
+
+.btn
+    width: 100px
+    padding: .5rem 0
+    border: none
+    cursor: pointer
+    transition: all ease .3s
+    height: 2rem
+    display: flex
+    position: relative
+    background-color: $color
+    font-size: 14px
+    border-radius: 0 .5rem .5rem 0
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 1))
+    span
+        position: relative
+        transition: transform 0.3s ease
+
+    &:hover
+        border-radius: 0 1rem 1rem 0
+        box-shadow: 0px 0px 12px 1px $color
+
+        span
+            transform: translateX(25%)
+
+.overlay-wrap
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    z-index: 2
+    pointer-events: none
+    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 1))
+
+.overlay
+    position: absolute
+    clip-path: polygon(0% 0%, 0% 0%, 100% 25%, 100% 75%, 0% 100%, 0% 100%, 0% 75%, 0% 25%)
+    top: 0
+    left: 0
+    width: 10%
+    height: 100%
+    background-color: rgba(0, 0, 0, 1)
+    color: white
+    display: flex
+    align-items: center
+    justify-content: center
+    z-index: 1
+    
+
+.btn-primary
+    @include btn-styles($p-color, $p-color)
+
+.btn-secondary
+    @include btn-styles($s-color, $s-color)
+
+.btn-success
+    @include btn-styles($success-color, $success-color)
+
+.btn-warning
+    @include btn-styles($warning-color, $warning-color)
+
+.btn-danger
+    @include btn-styles($danger-color, $danger-color)
